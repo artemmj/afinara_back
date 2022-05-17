@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Загрузка началась</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+</head>
+<body>
+    <p class="h4"><a href="/admin/catalog/">Назад в каталог</a></p>
+    <p class="h3">Загрузка успешно началась.</p><br>
+    <button>Обновить</button><br><br>
+    <div id="news"><h5>Нажмите кнопку, чтобы обновить инфо о загрузке</h5></div>
+    <script type="text/javascript">
+    $(function(){
+        $('button').click(function(){
+            var a = "{{ task_id }}";
+            $('#news').load('/api/v1/celery/result/' + a);
+        });
+    });
+    </script>
+</body>
+</html>
